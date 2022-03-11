@@ -4,3 +4,27 @@
  * NOTE:
  * Your results should not contain any duplicate titles.
  */
+SELECT 
+	DISTINCT film.title
+FROM film 
+    JOIN film_category USING (film_id)
+    JOIN category USING(category_id)
+WHERE 
+	film.title 
+
+		IN 
+
+    		(
+                 SELECT
+			 film.title 
+                 FROM film 
+                 WHERE
+		 	rating='NC-17'
+			OR
+			rating='R'
+                 )
+                 
+	AND 
+
+	name='Children'
+;
